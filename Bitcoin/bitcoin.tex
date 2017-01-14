@@ -1,0 +1,280 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preambles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<<<<<<< Updated upstream
+\documentclass[a4paper, 12pt, DIV11, BCOR5mm, tikz]{scrartcl}
+=======
+\documentclass[a4paper, 11pt, DIV11, BCOR5mm]{scrartcl}
+>>>>>>> Stashed changes
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{framed}
+\usepackage[linguistics]{forest}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% General configurations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sisetup{locale=DE}
+\graphicspath{ {Bilder/} }
+\setlength{\parskip}{12 pt}
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\large\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Counter definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{imagecounter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% New commands definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bfh}{\textsc{Berner Fachhochschule}}
+\newcommand{\modul}[1]{\textsc{#1}}
+\newcommand{\thema}{Bitcoin}
+\newcommand{\code}[1]{{\ttfamily #1}}
+\newcommand{\fdate}[1]{\emph{#1\newline\newline}}
+
+\newcommand{\query}[2]{
+    \code{?- #1}\\
+    \indent
+    \code{#2}
+}
+
+\NewDocumentCommand\semester{O{Herbstsemester}m}{#1 #2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Color definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myred}{HTML}{C70039}
+\definecolor{mygreen}{HTML}{C5D200}%{A9C52F}
+\definecolor{mydarkgreen}{HTML}{51710A}
+\definecolor{myblue}{HTML}{07617D}
+\definecolor{mywhite}{HTML}{F5F5F5}
+\definecolor{mydarkgray}{HTML}{424242}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Renewed commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hyperlinks configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1, key2, key3}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=myblue,        % color of internal links (change box color with linkbordercolor)
+    citecolor=mygreen,      % color of links to bibliography
+    filecolor=myred,        % color of file links
+    urlcolor=myblue         % color of external links
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Listings configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset{%
+    backgroundcolor=\color{mywhite},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+    basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+    breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=l,	                     % adds a frame around the code
+    framerule=1pt,                   % controls the width of the rule
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{myblue},       % keyword style
+    language=Prolog,                 % the language of the code
+    morekeywords={*, use_module, append},                % if you want to add more keywords to the set
+    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=8pt,                   % how far the line-numbers are from the code
+    numberstyle=\footnotesize\color{mydarkgray}, % the style that is used for the line-numbers
+    rulecolor=\color{mydarkgreen},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=2,	                     % sets default tabsize to 2 spaces
+    title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+    xleftmargin=\parindent           % sets the position relative to left margin
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start of document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cover page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{gobble}
+\thispagestyle{empty}
+
+\begin{titlepage}
+    \begin{figure}
+        \begin{minipage}{0.3\textwidth}
+            \begin{figure}[H]
+                \includegraphics[scale=0.5]{BFH_Logo}
+            \end{figure}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{0.5\textwidth}
+            \begin{flushright}
+                Berner Fachhochschule\\
+                Technik und Informatik\\
+                \bigskip
+                Herbstsemester 16/17\\
+                \bigskip
+                Modul: BTI7311 - Informatik Seminar\\
+                Betreuer: Kai Brünnler\\
+            \end{flushright}
+        \end{minipage}
+    \end{figure}
+    \setlength{\textfloatsep}{4cm}
+    {\centering
+    {\scshape\large Seminararbeit \par}
+    {\scshape\LARGE\thema\par}}
+    \vfill
+    \begin{figure}[!hb]
+        \begin{minipage}[t][][b]{0.4\textwidth}
+            von\\
+            Carlos Arauz\\
+            5. Semester Informatik\\
+            Bärenfelserstrasse 9\\
+            4057 Basel\\
+            arauc1@bfh.ch\\
+            Tel.: +41 78 920 41 89
+        \end{minipage}
+        \begin{minipage}[t][][b]{0.4\textwidth}
+            {\color{white}von}\\
+            Angelo Campanile\\
+            5. Semester Informatik\\
+            Bottigenstrasse 2A\\
+            3018 Bern\\
+            campa1@bfh.ch\\
+            Tel.: +41 79 696 09 16
+        \end{minipage}
+    \end{figure}
+\end{titlepage}
+\newpage
+
+\pagenumbering{roman}       % set the page number to roman numbers
+\setcounter{page}{2}        % start the page numbering from 2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preface
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent
+{\scshape\LARGE Vorworte \par}
+\vspace{10mm}
+\noindent
+\justify
+Diese Seminararbeit führt die logische Programmierung mithilfe der Programmiersprache Prolog ein.
+Angenommen wird, dass der Leser bereits über ein allgemeines Wissen der Programmierung verfügt,
+weil diese Arbeit dem Programmierparadigma der logischen Programmierung Nachdruck verleiht.
+
+\noindent
+Die Beispiele, welche in diesem Dokument vorgestellt werden, sind mit SWI-Prolog \mbox{(\url{http://www.swi-prolog.org/})}
+getestet worden und können mit den meisten anderen Prolog-Systemen gleich gut funktionieren. Eine kurze Einleitung der
+Installierung von Prolog wird auch beschreibt, nachher werden nur die Quellcodes bzw. die Rückgabewerte der Abfragen angezeigt.
+
+%\cite{bibo1}
+%\begin{thebibliography}{9}
+%\bibitem{bibo1}
+%Michel Goossens, Frank Mittelbach, and Alexander Samarin.
+%\textit{The \LaTeX\ Companion}.
+%Addison-Wesley, Reading, Massachusetts, 1993.
+%\end{thebibliography}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Index
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\newpage
+
+% \listoffigures
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Header and Footer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhead[L]{\bfh}
+\fancyhead[R]{\modul{Informatik Seminar}}
+\fancyfoot[L]{\thema}
+\fancyfoot[R]{\semester{2016/2017}}
+
+\pagenumbering{arabic}  % sets the page numbers to arabic and restarts it
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Capitel 000
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Capitel 001
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Capitel 002
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Capitel 003
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace*{1mm}
+\section*{Schlussworte}
+\addcontentsline{toc}{section}{Schlussworte}
+\vspace{-10mm}
+\noindent\rule{0.8\textwidth}{0.4pt}
+
+\noindent
+Die Seminararbeit zum Thema Logische Programmierung mit Prolog hat uns einen tiefen Einblick in der Welt der Logischen Programmierung verschafft. Gerade zu Beginn war das Verständnis der Logischen Programmierung nicht so einfach zu verstehen. Zudem war Prolog Programme zu Programmieren ziemlich seltsam. Doch nach vielen Tutorials und Übungen wurden wir immer besser, schneller und effizienter in der Programmierung. Es war extrem spannend herauszufinden, was für Möglichkeiten die Logische Programmierung bietet, also wo sind ihre Stärken und Schwächen.
+
+\noindent
+Prolog kann durch seine Turing-Vollständigkeit jedes Programmierproblem lösen, jedoch ist es für das einte oder andere Programm weniger sinnvoll Prolog zu verwenden. Durch unsere Recherchen haben wir festgestellt, dass Prolog vor allem für Programme geeignet ist, in welchem man sehr viel über das Problem weiss. Dadurch können die Daten dann in Fakten, Regeln, usw. eingeschrieben werden, um das Problem dann zu lösen. Es ist natürlich auch möglich eine Graphische Oberfläche mit Prolog zu programmieren, jedoch ist dies sehr kompliziert und Zeitaufwändig, dass es dafür bessere Programmiersprachen gibt. Auf der einen Seite hat Prolog eine einfache Semantik und ist leicht durch die Fakten und Regeln modularisierbar, jedoch ist es auch ziemlich Fehleranfällig, da auf Datentypen verzichtet wird,  und man leicht unbeabsichtigt Endlosschleifen erstellen kann.
+
+\noindent
+Die Arbeit hat viel Zeit in Anspruch genommen, doch am Ende hat es sich gelohnt.
+Während dieser Arbeit haben wir viel Wissen mitnehmen können, was wir in Zukunft sicherlich einmal gebrauchen können.
+Dies ist nun das Ende unserer ersten Informatik-Seminar Arbeit, uns ist bewusst, dass dies nur einen Überblick der Logischen Programmierung darstellt und dass eine vertiefte Recherche sehr spannend wäre.
+Vielen Dank an die Dozenten welche uns die Möglichkeit gegeben haben dieses Thema erarbeiten zu dürfen.
+
+
+\nocite{*}
+\newpage
+\addcontentsline{toc}{section}{Literatur}
+\bibliography{Bibliografie/literatur}
+\bibliographystyle{alpha}
+\end{document}
