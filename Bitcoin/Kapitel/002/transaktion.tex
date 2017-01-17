@@ -30,7 +30,7 @@ Es gibt auch die Möglichkeit, dass man Bitcoins durch sogenanntes \emph{\dq Min
 \noindent
 Auf dem GUI des Bitcoin Programms kann der Sender nun die Adresse des Empfängers angeben und den Betrag der Bitcoins, der übertragen werden soll.
 Sobald er auf Senden drückt, wird die Transaktion dem System gesendet. Uns interessiert aber was hinter dem GUI passiert und wie sich diese Transaktion zusammenstellt.
-Eine Transaktion besteht aus verschiedenen Elementen. Nämlich aus einer Message, einer Signature und einem Public Key. Diese werden nun einzeln genauer erläutert:
+Eine Transaktion besteht aus verschiedenen Elementen. Nämlich aus einer Message, einer Signature und einem Public-key. Diese werden nun einzeln genauer erläutert:
 
 \noindent
 Die Message:
@@ -46,9 +46,19 @@ zugleich der Name der Transaktion, wie auch der Wert der weiterverwendet wird.
 
 \noindent
 Die Signature:
+Die Signature ist genau gleich wie eine Unterschrift in der realen Welt. Mit der Unterschrift bestätigt man also, dass irgend ein Dokument von sich selber und niemand anderes erstellt wurde und gültig ist.
+Bei der Signature beim Bitcoin ist das genau das gleiche. Man signiert eine Transaktion, um deren Wahrheitswert zu belegen und zu definieren, dass diese Transaktion zu einem selber gehört. Die Signature
+setzt sich aus dem Hash der Message und dem Private-key zusammen. Diese zwei Elemente generieren einen weiteren Hash, den wir die Signature nennen. Diese Signature ist nun genau dieser Transaktion
+und dieser Message gebunden. Also sie ist nicht nur dem Sender zugeteilt, was ja eigentlich logisch sein muss, da der Private-key des Senders gebraucht wird, sondern auch der Message selber. Denn wird
+dem Private-key eine andere Message hinzugefügt, so ändert sich auch die Signature.
 
+\noindent
+Der Public-key
+Der Public-key wird nur verwendet um zu verifizieren ob die Message und die Signature wirklich zueinander gehören und somit die Transaktion verifiziert ist.
 
+\noindent
+Da die Transaction nun erstellt wurde kommen wir nun zum Teil, wo die Miner ins Spiel kommen.
 
-
+\input{Kapitel/002/mining}
 
 \newpage
