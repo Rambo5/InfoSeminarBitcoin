@@ -10,29 +10,29 @@
 Mining wird in diesem System gebraucht, um sicherzustellen, dass alle Nutzer synchronisiert sind. Dazu werden alle in den letzten 10 Minuten erstellten Transaktionen in einen Transaktionsblock gelegt.
 Nun werden die gesammelten Daten in einen Kryptographischen Hash gewandelt. Dieser Hash beinhaltet Informationen über den letzten gelösten Block, sowie eine Zufallsgenerierte Zahl, die
 \emph{\dq Nounce \dq} genannt wird. Nun haben die Miner die Aufgabe, die Nounce herauszufinden, die diese Hashvalue verursacht. Das System ist so programmiert dass die Nounce eine Value
-generieren muss, die mit einer bestimmten Anzahl nullen beginnen muss. Das Ratsel ist auf die Schwierigkeit eingestellt, dass man etwa 10minuten für einen Transaktionblock braucht um die Lösung
-zu finden. Es ist klar, dass immer neue technologien entwickelt werden und schnellere Computer existieren werden, deshalb werden somit die Rätsel immer schneller gelöst werden. Um dieses Problem vorzubeugen,
-ändert man einfach die Schwierigkeit der Nounce, damit der vorgang immer etwa 10 Minuten dauert. Der Miner, der das Rätsel gelöst hat, erhält als Belohnung ein paar Bitcoins.
+generieren muss, die mit einer bestimmten Anzahl nullen beginnen muss. Das Rätsel ist auf die Schwierigkeit eingestellt, dass man etwa 10minuten für einen Transaktionsblock braucht um die Lösung
+zu finden. Es ist klar, dass immer neue Technologien entwickelt werden und schnellere Computer existieren werden, deshalb werden somit die Rätsel immer schneller gelöst werden. Um dieses Problem vorzubeugen,
+ändert man einfach die Schwierigkeit der Nounce, damit der Vorgang immer etwa 10 Minuten dauert. Der Miner, der das Rätsel gelöst hat, erhält als Belohnung ein paar Bitcoins.
 
 \noindent
-Früher brauchten die Miner Ihren Prozessor um die Rätsel zu lösen, danach hatte man gemerkt, dass mit Graphikkarten die Rätsel viel schneller gelöst werden konnte und das ging so weiter,dass
+Früher brauchten die Miner Ihren Prozessor um die Rätsel zu lösen, danach hatte man gemerkt, dass mit Graphikkarten die Rätsel viel schneller gelöst werden konnte und das ging so weiter, dass
 Heutzutage sogar spezialisierte Hardware existiert, die extra dafür entwickelt wurden, Bitcoins zu minen. Dadurch wurde es immer schwieriger als Individuum durch Minen Bitcoins zu erhalten.
 Deshalb wurden sogenannte Mining-Pools erschaffen, wo viele Miner zusammen versuchen das Rätsel zu lösen und somit die Wahrscheinlichkeit höher ist dass man das Rätsel löst. Die Belohnung wird dann
 gleichermassen an alle Miner im Pool aufgeteilt.
 
 \noindent
-Das Mining trägt dazu bei, die Sicherheit im System aufrecht zu erhalten, indem es durch die Lotterie es verhindert, das irgend jemand einen Transaction Block in die Blockchain hinzufügen kann.
-Da Jeder Block in der Blockchain informationen aus dem vorherigen Block enthält, sichert sich das System vor änderungen ab. Sollte also jemand versuchen einen Block in der Blockchain
-zu ändern, dann würde das sofort auffallen und als ungültig erklärt werden, da der Hashwert nicht stimmen würde. Zudem verhindert es, dass Transaktionsblöcke rückgängig gemacht werden, da man
+Das Mining trägt dazu bei, die Sicherheit im System aufrecht zu erhalten, indem es durch die Lotterie es verhindert, das irgendjemand einen Transaction Block in die Blockchain hinzufügen kann.
+Da jeder Block in der Blockchain Informationen aus dem vorherigen Block enthält, sichert sich das System vor Änderungen ab. Sollte also jemand versuchen einen Block in der Blockchain
+zu ändern, dann würde das sofort auffallen und als ungültig erklärt werden, da der Hashwert nicht stimmen würde. Zudem verhindert es, das Transaktionsblöcke rückgängig gemacht werden, da man
 sonst alle Transaktionen in diesem Block neu schreiben müsste.
 
 \noindent
-Also ein Miner verifiziert, ob eine Transaktionüberhaupt gültig ist indem er den Public-key mit der Message und der Signature vergleicht. Trifft dies zu, so wird die Transaktion in einen Block gespeichert,
+Also ein Miner verifiziert, ob eine Transaktion überhaupt gültig ist indem er den Public-key mit der Message und der Signature vergleicht. Trifft dies zu, so wird die Transaktion in einen Block gespeichert,
 wo alle Transaktionen gespeichert werden, welche in den Letzten 10 Minuten aufgegeben wurden.
 
 \noindent
 Die Transaktion wird in ein Kryptographisches Hash Rätsel umgewandelt. Dabei werden Informationen aus dem letzten block in der Blockchain gebraucht, den Informationen der Transaction, und einer Nounce.
-Eine Nounce ist eine Zufallsgenerierte Zahl, welche zum Hash Rätsel hinzugefügt wird, dass dieser so Zufällig wie möglich ist. Dieses rätsel generiert nun ein Resultat dem sogenannten \emph{\dq Target \dq}.
+Eine Nounce ist eine Zufallsgenerierte Zahl, welche zum Hash Rätsel hinzugefügt wird, dass dieser so Zufällig wie möglich ist. Dieses Rätsel generiert nun ein Resultat dem sogenannten \emph{\dq Target \dq}.
 Das Target ist so aufgebaut, dass die Lösung z.B. mit einer gewissen Anzahl Nullen beginnen muss. Die Miner wählen nun die Transaktion aus, welche sie lösen möchten und versuchen einen Wert, nennen wir ihn
 \emph{\dq Key \dq}, herauszufinden, welches es schafft, dass die Lösung kleiner als der Target ist.
 
@@ -41,13 +41,13 @@ Findet nun jemand die Lösung, also den Key, der das Rätsel löst, so werden al
 seine Lösung allen anderen Nutzer im Netzwerk. Diese Verifizieren, ob die Lösung korrekt ist und fügen diese in Ihre Blockchain hinzu.
 
 \noindent
-Wie wir nun verhindert, dass jemand mit einem extrem starken Rechner, jede Transaktion lösen kann, und somit eigentlich sleber bestimmen kann, welche Transaktion als nächste genommen werden muss.
-Nun dies wird so gemacht, dass jeder Versuch diesen Key zu finden als ein \emph{\dq Vote \dq} angesehen wird, und so kann man verhindern, dass jemand 1000 mal mehr votet als andere.
+Wie wird nun verhindert, dass jemand mit einem extrem starken Rechner, jede Transaktion lösen kann, und somit eigentlich selber bestimmen kann, welche Transaktion als nächste genommen werden muss.
+Nun dies wird so gemacht, dass jeder Versuch diesen Key zu finden als ein \emph{\dq Vote \dq} angesehen wird, und so kann man verhindern, dass jemand 1000 mal mehr Votet als andere.
 
 \noindent
-Damit das Mining Interessant für Menschen wird wird pro Block das gefunden wurde. Einen Gewinn von heute 12.5 Bitcoins ausgeschüttet. Diese Zahl wird alle vier Jahre halbiert, damit das System nicht
+Damit das Mining Interessant für Menschen wird, wird pro Block das gefunden wurde. Einen Gewinn von heute 12.5 Bitcoins ausgeschüttet. Diese Zahl wird alle vier Jahre halbiert, damit das System nicht
 zu schnell alle je existierenden Bitcoins schon ausschüttet. Dieses System wird bis ins Jahre 2140 funktionieren, ab diesem Zeitpunkt sind alle jemals existierenden Bitcoins im System integriert.
-Zusätzlich zu diesem Gewinn, wird pro Transaktion eine Gebühr einberechent, die auch die Miner erhalten. Diese ist noch nicht je nach Summe der Transaktion definiert, sondern ist 0.0005 Bitcoins bei
+Zusätzlich zu diesem Gewinn, wird pro Transaktion eine Gebühr einberechnet, die auch die Miner erhalten. Diese ist noch nicht je nach Summe der Transaktion definiert, sondern ist 0.0005 Bitcoins bei
 einer Transaktion von 1000 Bitcoins und 0.004 Bitcoins für eine Transaktion von 0.02 Bitcoins.
 
 
