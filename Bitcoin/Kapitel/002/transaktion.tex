@@ -8,7 +8,8 @@
 
 \noindent
 In diesem Abschnitt versuchen wir zu erklären, wie genau eine solche Transaktion, also eine Geldüberweisung, Schritt für Schritt durchgeführt wird.
-Dies zeigen wir anhand eines Beispiels bei dem ein Benutzer einem anderen Benutzer eine Menge von Bitcoins sendet.
+Dies zeigen wir anhand eines Beispiels bei dem ein Benutzer einem anderen Benutzer eine Menge von Bitcoins sendet. Diese Benutzer nennen wir zur verständigung
+\emph{\dq Sender \dq} und \emph{\dq Empfänger \dq}.
 
 \noindent
 Damit man überhaupt Bitcoins transferieren können, brauchen wir den Bitcoin client zu installieren. Dieser Client kann man sich auf dieser Seite herunterladen: \emph{\dq https://bitcoin.org/de/ \dq}.
@@ -18,9 +19,33 @@ Man kann sich beliebig viele Adressen generieren lassen, die zur gleichen wallet
 Beim erstellen dieser Adresse wird automatisch ein Private- und ein Public-key generiert. Der Private-key ist der einzige Zugang zu der Adresse, sollte man den also verlieren, hat man keine möglichkeit mehr
 auf die Bitcoins zuzugreifen. Der Private key ist auch stark mit der Adresse gekoppelt, also mit dem Private-key kann man die Adresse berechnen aber nicht umgekehrt. Das bedeutet sollte jemand fremdes in den
 Besitz dieses Private-keys gelangen, so findet er auch die Adresse und hat somit zugang zu all sich darin befindenden Bitcoins. Es gibt keine möglichkeit Bitcoins ohne Private-key zurück zu erhalten.
-Diese Bitcoins bleiben zwar im System erhalten, jedoch können sie nicht mehr abgerufen werden.
+Diese Bitcoins bleiben zwar im System erhalten, jedoch können sie nicht mehr abgerufen werden. Der Public-key wird dazu verwendet, um zu validieren, ob die Transaktion wirklich von diesem Benutzer
+erstellt wurde. Dies wird in einem späteren Kapitel genauer erläutert.
 
 \noindent
+Da in userer Wallet noch keine Bitcoins vorhanden sind, können wir auch keine transferieren. Es gibt verschiedene möglichkeiten an Bitcoins zu gelangen.
+Man kann z.B. Bitcoins als Zahlung von jemandem akzeptieren und somit Bitcoins erhalten oder man geht auf einer Bitcoin-Webseite, wo man mit realem Geld Bitcoins kaufen kann.
+Es gibt auch die Möglichkeit, dass man Bitcoins durch sogenanntes \emph{\dq Minen \dq} erhält, das wird in einem späteren Kapitel noch behandelt.
+
+\noindent
+Auf dem GUI des Bitcoin Programms kann der Sender nun die Adresse des Empfängers angeben und den Betrag der Bitcoins, der übertragen werden soll.
+Sobald er auf Senden drückt, wird die Transaktion dem System gesendet. Uns interessiert aber was hinter dem GUI passiert und wie sich diese Transaktion zusammenstellt.
+Eine Transaktion besteht aus verschiedenen Elementen. Nämlich aus einer Message, einer Signature und einem Public Key. Diese werden nun einzeln genauer erläutert:
+
+\noindent
+Die Message:
+Die Message besteht selber aus verschiedenen Elementen die alle Informationen enthalten. Damit es möglich ist dass der Sender dem Empfänger eine Gewisse Anzahl Bitcoins senden kann, muss natürlich
+der Sender diese Bitcoins auch haben. Nehmen wir an, der Sender, der 100 Bitcoins besitzt, möchte dem Empfänger 90 Bitcoins senden, dann wird zuerst geschaut von wo der Sender diese Bitcoins eigentlich hat. Dies ist möglich da
+alle Transaktionen die jemals gemacht wurden in der Blockchain gespeichert wurden. Also sehen wir dort z.B. drei Transaktionen mit je 30 Bitcoins. diese drei Transaktionen werden nun je als Hash in der
+Message gespeichert und werden als input dieser Message angeschaut. Als Output werden auch wieder Transaktionen als Hashwert eingefügt. Dazu zählt die Information dass der Sender dem Empfänger 90 Bitcoins senden
+will. Diese Information braucht die Anzahl der zu sendenden Bitcoins und den Public-key des Empfängers. Als zweiten Output wert dieser Message wird folgendes gebraucht, die Information wie viele Bitcoins wieder
+zurück zum Sender gehen. Da der Sender ja 100 Bitcoins besitzt aber nur 90 senden will, wird noch angegeben, wie viele Bitcoins wieder zurück zum Sender gelangen. Dazu braucht man den public-key des Senders,
+und die Menge der zurückgehenden Bitcoins. In diesem Fall werden wir annehmen, dass das 9 Bitcoins sein werden. Die Frage, die man sich jetzt sofort stellt ist, was passiert mit dem letzten verbleibenden
+Bitcoin? Nun dieser wird als Transaktions Gebühr verwendet und geht and den Benutzer, der die Transaktion löst, aber dazu später mehr. Nun haben wir alle Elemente der Message. Und der Hash dieser Message, ist
+zugleich der Name der Transaktion, wie auch der Wert der weiterverwendet wird.
+
+\noindent
+Die Signature:
 
 
 
