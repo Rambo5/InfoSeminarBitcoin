@@ -26,5 +26,24 @@ Da Jeder Block in der Blockchain informationen aus dem vorherigen Block enthält
 zu ändern, dann würde das sofort auffallen und als ungültig erklärt werden, da der Hashwert nicht stimmen würde. Zudem verhindert es, dass Transaktionsblöcke rückgängig gemacht werden, da man
 sonst alle Transaktionen in diesem Block neu schreiben müsste.
 
+\noindent
+Also ein Miner verifiziert, ob eine Transaktionüberhaupt gültig ist indem er den Public-key mit der Message und der Signature vergleicht. Trifft dies zu, so wird die Transaktion in einen Block gespeichert,
+wo alle Transaktionen gespeichert werden, welche in den Letzten 10 Minuten aufgegeben wurden.
+
+\noindent
+Die Transaktion wird in ein Kryptographisches Hash Rätsel umgewandelt. Dabei werden Informationen aus dem letzten block in der Blockchain gebraucht, den Informationen der Transaction, und einer Nounce.
+Eine Nounce ist eine Zufallsgenerierte Zahl, welche zum Hash Rätsel hinzugefügt wird, dass dieser so Zufällig wie möglich ist. Dieses rätsel generiert nun ein Resultat dem sogenannten \emph{\dq Target \dq}.
+Das Target ist so aufgebaut, dass die Lösung z.B. mit einer gewissen Anzahl Nullen beginnen muss. Die Miner wählen nun die Transaktion aus, welche sie lösen möchten und versuchen einen Wert, nennen wir ihn
+\emph{\dq Key \dq}, herauszufinden, welches es schafft, dass die Lösung kleiner als der Target ist.
+
+\noindent
+Findet nun jemand die Lösung, also den Key, der die Transaktion zu der Blockchain hinzufügen kann. So erhält dieser Miner die Gewinnsumme der Bitcoins und Broadcastet seine Lösung allen anderen Nutzer im Netzwerk.
+Diese Verifizieren, ob die Lösung korrekt ist und fügen diese in Ihre Blockchain hinzu.
+
+\noindent
+Wie wir nun verhindert, dass jemand mit einem extrem starken Rechner, jede Transaktion lösen kann, und somit eigentlich sleber bestimmen kann, welche Transaktion als nächste genommen werden muss.
+Nun dies wird so gemacht, dass jeder Versuch diesen Key zu finden als ein \emph{\dq Vote \dq} angesehen wird, und so kann man verhindern, dass jemand 1000 mal mehr votet als andere.
+
+
 
 \newpage
